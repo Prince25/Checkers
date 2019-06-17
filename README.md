@@ -13,6 +13,8 @@ Game will alternate between players until there are no valid moves or pieces rem
 Press 'r' key to reset the game.
 
 # TODO
+- Add AI
 - Add Sounds / Music
 - Add win counter
 - Add warnings
+- Convert code to processing.js or p5.js and host it online

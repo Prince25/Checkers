@@ -1,3 +1,4 @@
+/* @pjs preload="res/red.png,res/red_king.png,res/black.png,res/black_king.png"; */
 
 final int WIDTH   = 640;
 final int HEIGHT  = 640;
@@ -13,7 +14,7 @@ boolean gameOver;
 boolean clicked;  // First click selects piece, second click moves
 boolean promote;
 boolean doubleJump;
-boolean mustJump;
+boolean mustJumpBool;
 int doubleJumpX, doubleJumpY;
 
 PImage[][] board;
@@ -28,15 +29,15 @@ void keyPressed() {
 
 // Initital Setup
 void setup(){
-  surface.setSize(WIDTH, HEIGHT);  // size(WIDTH, HEIGHT);
+  size(640, 640);     // surface.setSize(WIDTH, HEIGHT);
   noStroke();
   textSize(WIDTH/8);
   textAlign(CENTER);
   
-  red = loadImage("red.png");
-  red_king = loadImage("red_king.png");
-  black = loadImage("black.png");
-  black_king = loadImage("black_king.png");
+  red = loadImage("res/red.png");
+  red_king = loadImage("res/red_king.png");
+  black = loadImage("res/black.png");
+  black_king = loadImage("res/black_king.png");
   red.resize(BLOCK_W, BLOCK_H);
   black.resize(BLOCK_W, BLOCK_H);
   red_king.resize(BLOCK_W, BLOCK_H);
@@ -82,7 +83,7 @@ void startPosition() {
   clicked  = false;
   promote = false;
   doubleJump = false;
-  mustJump = false;
+  mustJumpBool = false;
   
   board = new PImage[8][8];  // board[Horizontal][Vertical]
   for (int horizontal = 0; horizontal < 8; horizontal++) {
@@ -137,8 +138,8 @@ void showboard() {
 void mousePressed() {
   if (gameOver) startPosition();
   
-  int x = mouseX/80;
-  int y = mouseY/80;
+  int x = (int) (mouseX/80);
+  int y = (int) (mouseY/80);
   
   if (!clicked && isValidStart(x,y)) {
     showMovesXY[0] = x;
@@ -219,7 +220,7 @@ void movePiece(int fromX, int fromY, int toX, int toY) {
  promote = false;
  String otherPlayer = ((turn == "red") ? "black" : "red");
  
- mustJump = mustJump(otherPlayer, false);
+ mustJumpBool = mustJump(otherPlayer, false);
 
  if ( mustJump(otherPlayer, true) ) {
    winner = turn;
@@ -243,7 +244,7 @@ boolean isValidMove(int fromX, int fromY, int toX, int toY, String side) {
  if(doubleJump && (fromY != doubleJumpY || fromX != doubleJumpX || abs(toX - fromX) != 2))
    return false;
 
- if(mustJump && abs(toX - fromX) != 2)
+ if(mustJumpBool && abs(toX - fromX) != 2)
    return false;
 
 

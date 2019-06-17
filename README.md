@@ -18,3 +18,4 @@ Press 'r' key to reset the game.
 - Add win counter
 - Add warnings
 - [Convert code to processing.js or p5.js and host it online](https://cs.nyu.edu/~kapp/cs101/processing_on_the_web/)
+  - [Transition](https://github.com/processing/p5.js/wiki/Processing-transition)

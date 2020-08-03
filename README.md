@@ -2,7 +2,7 @@
 2 Player fully functioning game of Checkers (Draughts)
 
 # How to run
-[Click to play](http://prinia.team/Checkers/)
+[Click to play](https://princes25.github.io/Checkers/)
 
 # How to play
 Game starts with red's turn. Click the piece you wish to move and then click one of the highlighted squares to move there.
